@@ -10,10 +10,10 @@ replicaCount: 1
 revisionHistoryLimit: 10
 
 image:
-  repository: harbor.nam/prometheus/altermanager
+  repository: quay.io/prometheus/alertmanager
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.27.0"
+  tag: ""
 
 # Full external URL where alertmanager is reachable, used for backlinks.
 baseURL: ""
@@ -29,8 +29,7 @@ extraSecretMounts: []
   #   secretName: alertmanager-secret-files
   #   readOnly: true
 
-imagePullSecrets:
-- name: regcred
+imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 ## namespaceOverride overrides the namespace which the resources will be deployed in
@@ -270,7 +269,7 @@ persistence:
   ## If undefined (the default) or set to null, no storageClassName spec is
   ## set, choosing the default provisioner.
   ##
-  storageClass: "nfs-client"
+  # storageClass: "-"
   accessModes:
     - ReadWriteOnce
   size: 50Mi
